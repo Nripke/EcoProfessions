@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="EcoProfessions">
+    <output-path>$PROJECT_DIR$/out/artifacts/EcoProfessions</output-path>
+    <root id="archive" name="EcoProfessions.jar">
+      <element id="module-output" name="EcoProfessions" />
+    </root>
+  </artifact>
+</component>

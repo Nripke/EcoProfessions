@@ -1,0 +1,8 @@
+name: EcoProfessions
+main: EcoProfPackage.Main
+author: Noah Ripke/Matthew Weisman
+version: '${project.version}'
+api-version: 1.18
+description: EcoProfessions allows you to create an economy with working professions, skills, and more!
+
+commands:
