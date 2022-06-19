@@ -20,11 +20,12 @@ public class ItemManager {
     public void getCrafting(){
         itemCollector();}
 
-    public static void itemCollector(){
+    public static void itemCollector(){//Gathers all the Custom Items Made so it is easy to look at.
         explodingPick();
     }
 
     private static void explodingPick(){
+        //Makes a new Custom item with lore, enchantment and a recipe.
         ItemStack item = new ItemStack(Material.STONE_PICKAXE, 1);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_RED +"Exploding Pick");
