@@ -73,7 +73,7 @@ public class Farming {
         if (xp+amount >= xpReq)
         {
             level++; //Later add a way to communicate this to the player
-            Bukkit.getServer().broadcastMessage(player.getName() + " has achieved mining level " + level + "!");
+            //Bukkit.getServer().broadcastMessage(player.getName() + " has achieved mining level " + level + "!");
             xp += (amount-xpReq);
             xpReq = 100*Math.pow(1.2, level-1);
             return;
@@ -98,4 +98,5 @@ public class Farming {
         this.xp = xp;
     }
 
+    public double getXpReq() {return xpReq;}
 }

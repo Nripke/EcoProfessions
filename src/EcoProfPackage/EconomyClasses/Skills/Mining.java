@@ -81,4 +81,5 @@ public class Mining
         this.xp = xp;
     }
 
+    public double getXpReq() {return xpReq;}
 }

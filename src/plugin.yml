@@ -6,3 +6,6 @@ api-version: 1.18
 description: EcoProfessions allows you to create an economy with working professions, skills, and more!
 
 commands:
+  skills:
+    description: General command regarding skills interface
+    usage: /<command>

@@ -81,4 +81,6 @@ public class Woodcutting
     public void setXp(double xp) {
         this.xp = xp;
     }
+
+    public double getXpReq() {return xpReq;}
 }

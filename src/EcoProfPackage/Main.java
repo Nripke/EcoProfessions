@@ -1,5 +1,6 @@
 package EcoProfPackage;
 
+import EcoProfPackage.Commands.CommandManager;
 import EcoProfPackage.EconomyClasses.Skills.SkillsListener;
 import EcoProfPackage.EconomyClasses.Skills.Woodcutting;
 import EcoProfPackage.Listeners.PlayerJoinTest;
@@ -15,6 +16,9 @@ public class Main extends JavaPlugin
     @Override
     public void onEnable()
     {
+        CommandManager command = new CommandManager();
+        getCommand("skills").setExecutor(command);
+
         manager = new Manager(this);
         //Need to read config.yml file
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class Manager {
     private final Main plugin;
 
-    private List<PlayerData> playerDataList;
+    private static List<PlayerData> playerDataList;
 
 
     /*
@@ -37,7 +37,7 @@ public class Manager {
         return playerDataList;
     }
 
-    public PlayerData getPD(Player player)
+    public static PlayerData getPD(Player player)
     {
         for (PlayerData pd : playerDataList)
         {

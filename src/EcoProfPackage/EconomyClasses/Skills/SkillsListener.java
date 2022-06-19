@@ -27,7 +27,7 @@ public class SkillsListener implements Listener
     public void onBlockBroken(BlockBreakEvent event)
     {
         SkillHolder sh = m.getManager().getPD(event.getPlayer()).getSH();
-        Bukkit.getServer().broadcastMessage(event.getPlayer() + " broke " + event.getBlock().getType());
+        //Bukkit.getServer().broadcastMessage(event.getPlayer() + " broke " + event.getBlock().getType());
         sh.getWC().onBlockBroken(event);
         sh.getMin().onBlockBroken(event);
         sh.getFarm().onBlockBroken(event);
@@ -40,7 +40,7 @@ public class SkillsListener implements Listener
         Player posPlayer = entity.getKiller();
         if(posPlayer == null) {return;}
         SkillHolder sh = m.getManager().getPD(posPlayer).getSH();
-        Bukkit.getServer().broadcastMessage(event.getEntity().getKiller() + " killed " + event.getEntity().getType());
+        //Bukkit.getServer().broadcastMessage(event.getEntity().getKiller() + " killed " + event.getEntity().getType());
         sh.getHun().onKill(event);
         sh.getFarm().onKill(event);
     }
