@@ -20,12 +20,12 @@ public class ItemManager {
     public void getCrafting(){
         itemCollector();}
 
-    public static void itemCollector(){//Gathers all the Custom Items Made so it is easy to look at.
+    public static void itemCollector(){
         explodingPick();
+        emeraldPick();
     }
 
     private static void explodingPick(){
-        //Makes a new Custom item with lore, enchantment and a recipe.
         ItemStack item = new ItemStack(Material.STONE_PICKAXE, 1);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.DARK_RED +"Exploding Pick");
@@ -51,7 +51,33 @@ public class ItemManager {
 
         Bukkit.getServer().addRecipe(shapedRecipe);
     }
+    private static void emeraldPick(){
+        ItemStack item = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.DARK_GREEN +"Emerald Pick");
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "This Item gives the user a big buff, greater then a diamond pickaxe.");
 
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4,false);
+        meta.addEnchant(Enchantment.DURABILITY, 4,false);
+        meta.addEnchant(Enchantment.DIG_SPEED, 5,false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+
+        item.setItemMeta(meta);
+
+        totem = item;
+
+        //Shaped Recipe
+        ShapedRecipe shapedRecipe = new ShapedRecipe(NamespacedKey.minecraft( "explodingPick"), item);
+        shapedRecipe.shape("EEE", " D ", " D ");
+
+        shapedRecipe.setIngredient('E', Material.EMERALD_BLOCK);
+        shapedRecipe.setIngredient('D', Material.DIAMOND_PICKAXE);
+
+        Bukkit.getServer().addRecipe(shapedRecipe);
+    }
 
 
 }
