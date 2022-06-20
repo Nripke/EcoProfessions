@@ -17,12 +17,14 @@ public class ItemManager {
     public static ItemStack totem;
 
 
+
     public void getCrafting(){
         itemCollector();}
 
     public static void itemCollector(){
         explodingPick();
         emeraldPick();
+        teleportationSword();
     }
 
     private static void explodingPick(){
@@ -78,6 +80,38 @@ public class ItemManager {
 
         Bukkit.getServer().addRecipe(shapedRecipe);
     }
+
+
+    private static void teleportationSword(){
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName( ChatColor.MAGIC + "XX" + ChatColor.BOLD+ ChatColor.DARK_PURPLE + "Teleportation Sword" + ChatColor.MAGIC + "XX");
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.DARK_AQUA + "This Item gives the user access through teleportation");
+
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4,false);
+        meta.addEnchant(Enchantment.DURABILITY, 4,false);
+        meta.addEnchant(Enchantment.DAMAGE_ALL, 1,false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+
+        item.setItemMeta(meta);
+
+        totem = item;
+
+        //Shaped Recipe
+        ShapedRecipe shapedRecipe = new ShapedRecipe(NamespacedKey.minecraft( "teleportationSword"), item);
+        shapedRecipe.shape("EDE", "CDC", "ESE");
+
+        shapedRecipe.setIngredient('E', Material.ENDER_PEARL);
+        shapedRecipe.setIngredient('D', Material.DIAMOND_SWORD);
+        shapedRecipe.setIngredient('C', Material.END_CRYSTAL);
+        shapedRecipe.setIngredient('S', Material.STICK);
+
+        Bukkit.getServer().addRecipe(shapedRecipe);
+    }
+
 
 
 }
