@@ -2,7 +2,7 @@ package EcoProfPackage.CustomItems;
 
 import EcoProfPackage.Main;
 import org.bukkit.*;
-import org.bukkit.attribute.Attribute;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,8 +10,9 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.Locale;
 import java.util.Objects;
 
 public class ItemListener implements Listener {
@@ -30,13 +31,13 @@ public class ItemListener implements Listener {
             if (!e.getItem().hasItemMeta()) {
                 return;
             }
-            expodingPick(e);
+            explodingPick(e);
             emeraldPick(e);
+            teleportationSword(e);
 
         }
 
-
-                    public void expodingPick(PlayerInteractEvent e){
+                    public void explodingPick(@NotNull PlayerInteractEvent e){
                 if (e.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
                     Player player = e.getPlayer();
                     World world = player.getWorld();
@@ -50,7 +51,7 @@ public class ItemListener implements Listener {
                 }
 
             }
-    public void emeraldPick(PlayerInteractEvent e){
+    public void emeraldPick(@NotNull PlayerInteractEvent e){
         if (e.getAction().equals(Action.LEFT_CLICK_BLOCK)) {
             Player player = e.getPlayer();
             World world = player.getWorld();
@@ -64,7 +65,31 @@ public class ItemListener implements Listener {
         }
 
     }
+    public void teleportationSword(@NotNull PlayerInteractEvent e){
+        if (e.getAction().equals(Action.RIGHT_CLICK_AIR)) {
+            Player player = e.getPlayer();
+            Location loc = player.getEyeLocation();
+            Vector vector = loc.getDirection();
+            String itemsName = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+            if (player.getInventory().getItemInMainHand().getType() == Material.DIAMOND_SWORD && itemsName.equals("Teleportation Sword")) {
+                Location location = loc.clone();
+                Vector vec = vector.normalize().multiply(0.2);
+                int i = 0;
+                while(i <= 10){
+                    location.add(vec);
+                    if(location.getBlock().getType() != Material.AIR){
+                        player.teleport(location);
+                        Location loc1 = player.getLocation().add(0,5,0);
+                        player.spawnParticle(Particle.DRIPPING_OBSIDIAN_TEAR, loc1,15);
+                        player.playSound(location, Sound.ENTITY_ENDERMAN_TELEPORT, 3,3);
+                    }
+                    i+=0.2;
+                }
+            }
+            return;
+        }
 
+    }
 
 
 }
