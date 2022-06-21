@@ -28,6 +28,7 @@ public class Main extends JavaPlugin
         });
         getServer().getPluginManager().registerEvents(new PlayerJoinTest(this), this);
         getServer().getPluginManager().registerEvents(new SkillsListener(this), this);
+        getServer().getPluginManager().registerEvents(new ItemListener(this), this);
         getLogger().info("~EcoProfessions Plugin has been ENABLED on this world~");
     }
 
