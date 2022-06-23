@@ -25,6 +25,7 @@ public class ItemManager {
         explodingPick();
         emeraldPick();
         teleportationSword();
+        gravitationalUraniumBlaster();
     }
 
     private static void explodingPick(){
@@ -107,6 +108,34 @@ public class ItemManager {
         shapedRecipe.setIngredient('E', Material.ENDER_PEARL);
         shapedRecipe.setIngredient('D', Material.DIAMOND_SWORD);
         shapedRecipe.setIngredient('C', Material.END_CRYSTAL);
+        shapedRecipe.setIngredient('S', Material.STICK);
+
+        Bukkit.getServer().addRecipe(shapedRecipe);
+    }
+
+    private static void gravitationalUraniumBlaster(){
+        ItemStack item = new ItemStack(Material.IRON_HORSE_ARMOR, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName( ChatColor.MAGIC + "XX" + ChatColor.BOLD+ ChatColor.GREEN + "Gravitational Uranium Blaster" + ChatColor.MAGIC + "XX");
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.DARK_AQUA + "This Item is one of the best Items. It has the power to destroy your enemies in seconds.");
+
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4,false);
+        meta.addEnchant(Enchantment.DURABILITY, 4,false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+
+        item.setItemMeta(meta);
+
+        totem = item;
+
+        //Shaped Recipe
+        ShapedRecipe shapedRecipe = new ShapedRecipe(NamespacedKey.minecraft( "gravitationaluraniumblaster"), item);
+        shapedRecipe.shape("EDE", "DDD", " S ");
+
+        shapedRecipe.setIngredient('E', Material.IRON_HORSE_ARMOR);
+        shapedRecipe.setIngredient('D', Material.EMERALD_BLOCK);
         shapedRecipe.setIngredient('S', Material.STICK);
 
         Bukkit.getServer().addRecipe(shapedRecipe);
